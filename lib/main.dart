@@ -1,52 +1,86 @@
-// import 'dart:ffi';
-
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(
-    MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.red,
-        appBar: AppBar(
-          title: Text(
-            'Dice',
-            style: TextStyle(
-                fontStyle: FontStyle.normal,
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
-          ),
-          backgroundColor: Colors.red,
-        ),
-        body: DicePage(),
-      ),
-    ),
-  );
+  runApp(MyApp());
 }
 
-class DicePage extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var leftDiceNumber = 1;
-    return Center(
-        child: Row(
-      children: <Widget>[
-        Expanded(
-          child: TextButton(
-            onPressed: () {
-              print('Heloo in right');
-            },
-            child: Image.asset('images/dice2.png'),
-          ),
+    return MaterialApp(
+      home: DicePage(),
+    );
+  }
+}
+
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int diceValue1 = 1;
+  int diceValue2 = 1;
+
+  // List of images for each dice face
+  final List<String> diceImages = [
+    'images/dice1.png', // Image for 1
+    'images/dice2.png', // Image for 2
+    'images/dice3.png', // Image for 3
+    'images/dice4.png', // Image for 4
+    'images/dice5.png', // Image for 5
+    'images/dice6.png', // Image for 6
+  ];
+
+  void rollDice() {
+    setState(() {
+      // Generate random numbers between 1 and 6 for each die
+      diceValue1 = Random().nextInt(6) + 1;
+      diceValue2 = Random().nextInt(6) + 1;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.red,
+      appBar: AppBar(
+        title: Text('Dice Game'),
+        titleTextStyle: TextStyle(
+          fontSize: 30.0,
         ),
-        Expanded(
-          child: TextButton(
-              onPressed: () {
-                print('Heloo in left');
-              },
-              child: Image.asset('images/dice2.png')),
+        backgroundColor: Colors.red,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Display the dice images
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(diceImages[diceValue1 - 1],
+                    width: 100, height: 100),
+                SizedBox(width: 20),
+                Image.asset(diceImages[diceValue2 - 1],
+                    width: 100, height: 100),
+              ],
+            ),
+            SizedBox(height: 40),
+            // Roll button
+            ElevatedButton(
+              onPressed: rollDice,
+              child: Text('Roll Dice'),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                textStyle: TextStyle(fontSize: 18),
+                // backgroundColor: Colors.red,
+              ),
+            ),
+          ],
         ),
-      ],
-    ));
+      ),
+    );
   }
 }
