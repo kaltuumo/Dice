@@ -71,7 +71,7 @@ class _DicePageState extends State<DicePage> {
             // Roll button
             ElevatedButton(
               onPressed: rollDice,
-              child: Text('Roll Dice'),
+              child: Text('Click Dice'),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 textStyle: TextStyle(fontSize: 18),
