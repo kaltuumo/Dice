@@ -46,9 +46,13 @@ class _DicePageState extends State<DicePage> {
     return Scaffold(
       backgroundColor: Colors.red,
       appBar: AppBar(
-        title: Text('Dice Game'),
-        titleTextStyle: TextStyle(
-          fontSize: 30.0,
+        title: Center(
+          child: Text(
+            'Dice Game',
+            style: TextStyle(
+              fontSize: 30.0,
+            ),
+          ),
         ),
         backgroundColor: Colors.red,
       ),
