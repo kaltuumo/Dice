@@ -19,11 +19,21 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.2
+
+flutter_icons: 
+  android: true
+  ios: true
+  image_path: "assets/log.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/log.png"
+  
 
  
-  flutter_lints: ^4.0.0
+  # flutter_lints: ^4.0.0
 
 
 # The following section is specific to Flutter packages.
